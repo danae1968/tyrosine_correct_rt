@@ -61,7 +61,7 @@ rt_all_subs=[rt_all_subs;sub(j).rt];
 for i=1:size(sub(j).trialmem,1)*size(sub(j).trialmem,2);
     %alternatively switch a(i) case
     if sub(j).trialmem(i)==0;
-        ignore=[ignore,i]
+        ignore=[ignore,i];
     elseif sub(j).trialmem(i)==1
         no_inter=[no_inter,i];
     elseif sub(j).trialmem(i)==2;
@@ -81,10 +81,10 @@ st_dev_correct_no_inter=std2(correct_all_subs(no_inter));
 st_dev_correct_update=std2(correct_all_subs(update));
 
 
-average_rt_all_subs=mean2(rt_all_subs) %mean of all elements in matrix
-average_rt_ignore_all_subs=mean2(rt_all_subs(ignore))
-average_rt_no_inter_all_subs=mean2(rt_all_subs(no_inter))
-average_rt_update_all_subs=mean2(rt_all_subs(update))
+average_rt_all_subs=mean2(rt_all_subs); %mean of all elements in matrix
+average_rt_ignore_all_subs=mean2(rt_all_subs(ignore));
+average_rt_no_inter_all_subs=mean2(rt_all_subs(no_inter));
+average_rt_update_all_subs=mean2(rt_all_subs(update));
 
 st_dev_rt_all_subs=std2(rt_all_subs);
 st_dev_rt_ignore=std2(rt_all_subs(ignore));
@@ -103,7 +103,7 @@ set(gca, 'XTickLabel', {'Overall','Ignore','No Interference','Update'})
 ylabel('Percentage correct');
 title('Average correct responses of all subjects');
 hold on
-errorbar(data_average_correct,data_st_dev_correct)
+% errorbar(data_average_correct,data_st_dev_correct)
 hold off
 
 
