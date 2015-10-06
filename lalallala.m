@@ -50,13 +50,13 @@ update=[];
 for j = 1:length(names)
 temp = load(names(j).name);
 
-sub(j).correct=temp.correct;   %struct of variables i want to use
-sub(j).rt=temp.rt;
-sub(j).trialmem=temp.trialmem ;
+sub(j).correct=temp.correct   %struct of variables i want to use
+sub(j).rt=temp.rt
+sub(j).trialmem=temp.trialmem 
 
-correct_all_subs=[correct_all_subs;sub(j).correct];
+correct_all_subs=[correct_all_subs;sub(j).correct]
 
-rt_all_subs=[rt_all_subs;sub(j).rt];
+rt_all_subs=[rt_all_subs;sub(j).rt]
 
 for i=1:size(sub(j).trialmem,1)*size(sub(j).trialmem,2);
     %alternatively switch a(i) case
@@ -71,7 +71,7 @@ end
 
 end
 average_correct_all_subs=mean2(correct_all_subs); %mean of all elements in matrix
-average_correct_ignore_all_subs=mean2(correct_all_subs(ignore));
+average_correct_ignore_all_subs=mean2(correct_all_subs(ignore))
 average_correct_no_inter_all_subs=mean2(correct_all_subs(no_inter));
 average_correct_update_all_subs=mean2(correct_all_subs(update));
 
@@ -116,8 +116,3 @@ title('Average RTs of all subjects');
 hold on
 errorbar(data_average_rt,data_st_dev_rt)
 hold off
-
-  
-
-
-
