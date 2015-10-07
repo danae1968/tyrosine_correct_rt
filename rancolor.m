@@ -11,7 +11,7 @@ crossLines=crossLines';
 xCenter=rect(3)/2;
 yCenter=rect(4)/2;
  
-s=rng;
+% s=rng;
 rectOne=[600 600 700 700];
 rectTwo=[400 400 500 500];
 rectThree=[800 800 900 900];
