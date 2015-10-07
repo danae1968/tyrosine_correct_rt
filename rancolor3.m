@@ -1,9 +1,4 @@
-function rancolor2
-Screen('Preference','SkipSyncTests',1); 
-Screen('Preference', 'SuppressAllWarnings', 1);
-
-[wPtr,rect]=Screen('Openwindow',max(Screen('Screens')));
-
+function rancolor3
 crossLength=10;
 crossColor=[200 0 200];
 crossWidth=3;
@@ -32,14 +27,9 @@ rectTwo=CenterRectOnPoint(rectTwo,rectTwoX,rectTwoY);
 rectThree=CenterRectOnPoint(rectThree,rectThreeX,rectThreeY);
 
 
-% color1=randi(225,[3,3]);
-% color2=randi(225,[3,3]);
+color1=randi(225,[3,3]);
+color2=randi(225,[3,3]);
 
-color=randi(255,[3,9]);
-
-for trial=1:2
-   for i=1:3:9
-    col=color(:,(i:(i+2)))
  
 Screen('Flip',wPtr);
 Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
@@ -47,39 +37,23 @@ Screen('Flip',wPtr);
 WaitSecs(2);
 
 allRects=[rectOne',rectTwo',rectThree'];
-Screen('FillRect',wPtr,col,allRects);
+Screen('FillRect',wPtr,color1,allRects);
 Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
 Screen('Flip',wPtr);
 WaitSecs(2);
 % KbStrokeWait;
-
 Screen('Flip',wPtr);
 Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
 Screen('Flip',wPtr);
 WaitSecs(2);
 
-   end
-end
+Screen('FillRect',wPtr,color2,allRects);
+Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
+Screen('Flip',wPtr);
+WaitSecs(2);
 
-% Screen('FillRect',wPtr,col(2),allRects);
-% Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
-% Screen('Flip',wPtr);
-% WaitSecs(2);
-% 
-% Screen('Flip',wPtr);
-% Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
-% Screen('Flip',wPtr);
-% WaitSecs(2);
-
-clear Screen
-end
-
-% a=ChooseKFromN(225,3);
-% Screen('Flip',wPtr);
-% Screen('FillRect',wPtr,[a(i,:)],[400 400 500 500]);
-% Screen('Flip',wPtr,1);
-% rng(s);
-% KbStrokeWait;
-   
-
+Screen('Flip',wPtr);
+Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
+Screen('Flip',wPtr);
+WaitSecs(2);
 

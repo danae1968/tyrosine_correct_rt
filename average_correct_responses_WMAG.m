@@ -80,6 +80,7 @@ st_dev_correct_ignore=std2(correct_all_subs(ignore));
 st_dev_correct_no_inter=std2(correct_all_subs(no_inter));
 st_dev_correct_update=std2(correct_all_subs(update));
 
+st_error_correct_ignore = std2(correct_all_subs(ignore))/sqrt(4);
 
 average_rt_all_subs=mean2(rt_all_subs); 
 average_rt_ignore_all_subs=mean2(rt_all_subs(ignore));
