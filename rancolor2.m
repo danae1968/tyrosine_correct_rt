@@ -47,7 +47,6 @@ for i=1:3:13
  
 % Screen('BlendFunction',wPtr,GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA); 
 
-% 
 % Screen('Flip',wPtr);
 Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
 Screen('Flip',wPtr);
@@ -69,24 +68,6 @@ end
 clear Screen
 end
 
-% Screen('FillRect',wPtr,col(2),allRects);
-% Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
-% Screen('Flip',wPtr);
-% WaitSecs(2);
-% 
-% Screen('Flip',wPtr);
-% Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
-% Screen('Flip',wPtr);
-% WaitSecs(2);
-
-
-
-% a=ChooseKFromN(225,3);
-% Screen('Flip',wPtr);
-% Screen('FillRect',wPtr,[a(i,:)],[400 400 500 500]);
-% Screen('Flip',wPtr,1);
-% rng(s);
-% KbStrokeWait;
    
 
 
