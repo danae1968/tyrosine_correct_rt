@@ -75,25 +75,23 @@ average_correct_ignore_all_subs=mean2(correct_all_subs(ignore));
 average_correct_no_inter_all_subs=mean2(correct_all_subs(no_inter));
 average_correct_update_all_subs=mean2(correct_all_subs(update));
 
-st_dev_correct_all_subs=std2(correct_all_subs);
-st_dev_correct_ignore=std2(correct_all_subs(ignore));
-st_dev_correct_no_inter=std2(correct_all_subs(no_inter));
-st_dev_correct_update=std2(correct_all_subs(update));
-
-st_error_correct_ignore = std2(correct_all_subs(ignore))/sqrt(4);
+st_error_correct_all_subs=std2(correct_all_subs)/sqrt(length(names));
+st_error_correct_ignore=std2(correct_all_subs(ignore))/sqrt(length(names));
+st_error_correct_no_inter=std2(correct_all_subs(no_inter))/sqrt(length(names));
+st_error_correct_update=std2(correct_all_subs(update))/sqrt(length(names));
 
 average_rt_all_subs=mean2(rt_all_subs); 
 average_rt_ignore_all_subs=mean2(rt_all_subs(ignore));
 average_rt_no_inter_all_subs=mean2(rt_all_subs(no_inter));
 average_rt_update_all_subs=mean2(rt_all_subs(update));
 
-st_dev_rt_all_subs=std2(rt_all_subs);
-st_dev_rt_ignore=std2(rt_all_subs(ignore));
-st_dev_rt_no_inter=std2(rt_all_subs(no_inter));
-st_dev_rt_update=std2(rt_all_subs(update));
+st_error_rt_all_subs=std2(rt_all_subs)/sqrt(length(names));
+st_error_rt_ignore=std2(rt_all_subs(ignore))/sqrt(length(names));
+st_error_rt_no_inter=std2(rt_all_subs(no_inter))/sqrt(length(names));
+st_error_rt_update=std2(rt_all_subs(update))/sqrt(length(names));
 
-data_st_dev_correct=[st_dev_correct_all_subs st_dev_correct_ignore st_dev_correct_no_inter st_dev_correct_update];
-data_st_dev_rt=[st_dev_rt_all_subs st_dev_rt_ignore st_dev_rt_no_inter st_dev_rt_update];
+data_st_error_correct=[st_error_correct_all_subs st_error_correct_ignore st_error_correct_no_inter st_error_correct_update];
+data_st_error_rt=[st_error_rt_all_subs st_error_rt_ignore st_error_rt_no_inter st_error_rt_update];
 data_average_rt=[average_rt_all_subs average_rt_ignore_all_subs average_rt_no_inter_all_subs average_rt_update_all_subs];
 data_average_correct=[average_correct_all_subs average_correct_ignore_all_subs average_correct_no_inter_all_subs average_correct_update_all_subs];
 
