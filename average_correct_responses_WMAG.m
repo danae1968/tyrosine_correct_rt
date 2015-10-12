@@ -102,7 +102,7 @@ set(gca, 'XTickLabel', {'Overall','Ignore','No Interference','Update'})
 ylabel('Percentage correct');
 title('Average correct responses of all subjects');
 hold on
-h=errorbar(data_average_correct,data_st_dev_correct)
+h=errorbar(data_average_correct,data_st_error_correct)
 set(h,'linestyle','none'); %removes lines from st.errors
 hold off
 
@@ -114,7 +114,7 @@ set(gca, 'XTickLabel', {'Overall','Ignore','No Interference','Update'})
 ylabel('RT');
 title('Average RTs of all subjects');
 hold on
-hrt=errorbar(data_average_rt,data_st_dev_rt)
+hrt=errorbar(data_average_rt,data_st_error_rt)
 set(hrt,'linestyle','none'); 
 hold off
 
