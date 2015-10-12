@@ -3,6 +3,7 @@ Screen('Preference','SkipSyncTests',1);
 Screen('Preference', 'SuppressAllWarnings', 1);
 
 [wPtr,rect]=Screen('Openwindow',max(Screen('Screens')));
+HideCursor;
 
 % crossLength=10;
 % crossColor=[200 0 200];    %fixation cross features
