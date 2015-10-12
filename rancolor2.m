@@ -1,4 +1,6 @@
 function rancolor2
+% rng('shuffle') %shuffles standar pseudorandom numbers so that i don't get same each time
+
 Screen('Preference','SkipSyncTests',1); 
 Screen('Preference', 'SuppressAllWarnings', 1);
 
