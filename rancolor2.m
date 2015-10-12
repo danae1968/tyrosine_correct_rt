@@ -4,20 +4,20 @@ Screen('Preference', 'SuppressAllWarnings', 1);
 
 [wPtr,rect]=Screen('Openwindow',max(Screen('Screens')));
 
-crossLength=10;
-crossColor=[200 0 200];    %fixation cross features
-crossWidth=3;
+% crossLength=10;
+% crossColor=[200 0 200];    %fixation cross features
+% crossWidth=3;
  
-crossLines=[-crossLength,0;crossLength,0; 0, -crossLength; 0, crossLength];
-crossLines=crossLines';
-xCenter=rect(3)/2;              %fixation cross location
-yCenter=rect(4)/2;
+% crossLines=[-crossLength,0;crossLength,0; 0, -crossLength; 0, crossLength];
+% crossLines=crossLines';
+% xCenter=rect(3)/2;              %fixation cross location
+% yCenter=rect(4)/2;
  
 % s=rng;
-rectOne=[600 600 700 700];
-rectTwo=[400 400 500 500];
-rectThree=[800 800 900 900];         %rect size
-rectFour=[800 800 900 900];
+rectOne=[0 0 100 100];
+rectTwo=[0 0 100 100];
+rectThree=[0 0 100 100];         %rect size
+rectFour=[0 0 100 100];
 
 rectOneX=2*(rect(3))/5;   %rect locations
 rectOneY=(rect(4))/3;
@@ -48,20 +48,23 @@ for i=1:3:13
 % Screen('BlendFunction',wPtr,GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA); 
 
 % Screen('Flip',wPtr);
-Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
+% Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
+drawFixationCross(wPtr,rect,10,[0 0 0],3)
 Screen('Flip',wPtr);
 WaitSecs(2);
 
 allRects=[rectOne',rectTwo',rectThree',rectFour'];
 Screen('FillRect',wPtr,color,allRects);
-Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
+% Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
+drawFixationCross(wPtr,rect,10,[0 0 0],3)
 Screen('Flip',wPtr);
 WaitSecs(2);
 % KbStrokeWait;
 
 % Screen('Flip',wPtr);
-Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
+% Screen('DrawLines',wPtr,crossLines,crossWidth,crossColor,[xCenter,yCenter]);
 % Screen('Flip',wPtr);
+drawFixationCross(wPtr,rect,10,[0 0 0],3)
 WaitSecs(2);
 
 end
