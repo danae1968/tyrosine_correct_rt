@@ -1,6 +1,10 @@
 function [resp, rt]=displayMessage(msg,submsg,keyresp)
 Screen('Preference','SkipSyncTests',1);     %skip these if we call the function later
 Screen('Preference', 'SuppressAllWarnings', 1);
+HideCursor;
+
+% devices = PsychHID('Devices');
+
 
 msg='Hello World';         %skip if called in script
 submsg='I m your wild girl';

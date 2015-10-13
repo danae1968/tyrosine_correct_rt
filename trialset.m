@@ -1,46 +1,44 @@
 %relate trial type and difficulty
 
-Ignore=zeros(4,1);
-No_Inter=ones(4,1);
-Update=No_Inter+1;
-type=[Ignore;No_Inter;Update]
-typeS=Shuffle(type);
+trialsNumber=12;
+types=3;
+blocks=1;
 
-Setsize1=ones(4,1);
-Setsize2=Setsize1+1;
-Setsize3=Setsize2+1;
-Setsize4=Setsize3+1;
+trialTypes=trialTypes(trialsNumber,blocks,types)
 
-level=[Setsize1;Setsize2;Setsize3;Setsize4]
-levelS=Shuffle(level);
+sets=[1:4]';
+setsize=repmat(sets,[trialsNumber/length(sets),blocks])
 
-number=[1:12]';
 
-trials=struct()
+trials=struct();
 
-for i=1:12
-trials(i).number=number(i)
-trials(i).type=typeS(i)
-end
+index=randperm(12)';
 
-set=randperm(4);
-
-for i=1:12
-if trials(i).type==0
-    trials(i).setsize=datasample(set,1)
-end
-
-    if trials(i).type==1
-        trials(i).setsize=datasample(set,1)
+for i=1:trialsNumber
+trials(i).number=trialsNumber(i)
+% trials(i).type=trialTypes(i)
+% trials(i).setsize=setsize(i)
     end
-    
-        if trials(i).type==2
-        trials(i).setsize=datasample(set,1)
-        end
-    
-end
 
 
-
-
-
+% set=randperm(4);
+% 
+% for i=1:12
+% if trials(i).type==0
+%     trials(i).setsize=datasample(set,1)
+% end
+% 
+%     if trials(i).type==1
+%         trials(i).setsize=datasample(set,1)
+%     end
+%     
+%         if trials(i).type==2
+%         trials(i).setsize=datasample(set,1)
+%         end
+%     
+% end
+% 
+% 
+% 
+% 
+% 

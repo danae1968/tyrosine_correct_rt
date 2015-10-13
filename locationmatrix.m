@@ -1,9 +1,4 @@
-Screen('Preference','SkipSyncTests',1); 
-Screen('Preference', 'SuppressAllWarnings', 1);
-
-[wPtr,rect]=Screen('Openwindow',max(Screen('Screens')));
-
-color = [0 0 200];
+function [locationmatrix]=locationmatrix()
 
 rectOne=[0 0 100 100];
 rectTwo=[0 0 100 100];
@@ -23,18 +18,9 @@ rectFourX=0.41*(rect(3));
 rectFourY=0.6*(rect(4));
 
 locationOne=CenterRectOnPoint(rectOne,rectOneX,rectOneY);  %places rects on location we want
-locationTwo=CenterRectOnPoint(rectOne,rectTwoX,rectTwoY);
-locationThree=CenterRectOnPoint(rectOne,rectThreeX,rectThreeY);
-locationFour=CenterRectOnPoint(rectOne,rectFourX,rectFourY);
+locationTwo=CenterRectOnPoint(rectTwo,rectTwoX,rectTwoY);
+locationThree=CenterRectOnPoint(rectThree,rectThreeX,rectThreeY);
+locationFour=CenterRectOnPoint(rectFour,rectFourX,rectFourY);
 
 locationmatrix=[locationOne',locationTwo',locationThree',locationFour'];
-
-Screen('FillRect',wPtr,color,[locationmatrix]);
-drawFixationCross(wPtr,rect,10,[0 0 0],3)
-Screen('Flip',wPtr);
-KbStrokeWait
-clear Screen
-
-
-
-
+end

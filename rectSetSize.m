@@ -1,6 +1,6 @@
 %setsize
 
-Setsize1=ones(9,4);
+Setsize1=ones(4,4);
 Setsize2=Setsize1+1;
 Setsize3=Setsize2+1;
 Setsize4=Setsize3+1;
