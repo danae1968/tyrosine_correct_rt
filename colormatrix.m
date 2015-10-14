@@ -1,5 +1,6 @@
-
+function[colormatrix,redmatrix,yellowmatrix,greenmatrix,bluematrix,purplematrix]=colormatrix()
 color=struct()
+numcolors=52
 for i=1:12
 color(i).shade='red';
 end
@@ -78,4 +79,18 @@ color(49).rgb=[148 0 211];
 color(50).rgb=[153 50 204];
 color(51).rgb=[186 85 211];
 color(52).rgb=[128 0 128];
+
+cellcolor=struct2cell(color);
+colorvector=cell2mat(cellcolor(2,:));
+colormatrix=reshape(colorvector,[numcolors,3]);
+redmatrix=colormatrix([1:12],:);
+yellowmatrix=colormatrix([13:17],:);
+greenmatrix=colormatrix([18:31],:);
+bluematrix=colormatrix([32:43],:);
+purplematrix=colormatrix([44:52],:);
+
+
+
+
+
 

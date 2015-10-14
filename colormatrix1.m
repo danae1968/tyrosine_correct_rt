@@ -52,6 +52,7 @@ end
 redmatrix=redmatrix';
 
 
+yellowmatrix=zeros(15,3);
 for i=1:length(yellowmatrix)
 
 Screen('FillRect',wPtr,yellowmatrix(:,i),rectOne');
