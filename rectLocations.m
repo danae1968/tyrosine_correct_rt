@@ -35,6 +35,13 @@ Screen('Flip',wPtr);
 KbStrokeWait
 clear Screen
 
+ovalA=[100,100,200,200]
+drawFixationCross(wPtr,rect,10,[0 0 0],3)
+Screen('FrameOval',wPtr,[250 0 0],ovalA)
+Screen('Flip',wPtr);
+KbStrokeWait
+clear Screen
+
 
 
 
