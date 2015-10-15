@@ -17,10 +17,17 @@ rectThreeY=0.6*(rect(4));
 rectFourX=0.41*(rect(3));
 rectFourY=0.6*(rect(4));
 
-locationOne=CenterRectOnPoint(rectOne,rectOneX,rectOneY);  %places rects on location we want
-locationTwo=CenterRectOnPoint(rectTwo,rectTwoX,rectTwoY);
-locationThree=CenterRectOnPoint(rectThree,rectThreeX,rectThreeY);
-locationFour=CenterRectOnPoint(rectFour,rectFourX,rectFourY);
+ rectsize=[0 0 100 100];
+ rect =[0 0 1680 1050]; %why does this not work? fix this
+ numrects=4;
+ xyindex=[0.4 0.6 0.6 0.41;0.35 0.37 0.6 0.6]';
+ 
+locationmatrix=zeros(size(xyindex,1),size(xyindex,2));
 
-locationmatrix=[locationOne',locationTwo',locationThree',locationFour'];
+ for r=1:length(locationmatrix)
+locationmatrix(r,1)=(rect(3)*xyindex(r,1));
+locationmatrix(r,2)=(rect(4)*xyindex(r,2));
+ end
+% 
+% locationmatrix=[locationOne',locationTwo',locationThree',locationFour'];
 end

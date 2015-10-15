@@ -1,6 +1,6 @@
 function[colormatrix,redmatrix,yellowmatrix,greenmatrix,bluematrix,purplematrix]=colormatrix()
-color=struct()
-numcolors=52
+color=struct();
+numcolors=52;
 for i=1:12
 color(i).shade='red';
 end

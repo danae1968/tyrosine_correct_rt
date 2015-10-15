@@ -45,7 +45,7 @@ shades = randi(255,[3,16]);
 
 for i=1:3:13
  color=shades(:,(i:i+3));
- 
+ rectOne=CenterRectOnPoint(rectOne,rectOneX,rectOneY);
 % Screen('BlendFunction',wPtr,GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA); 
 
 % Screen('Flip',wPtr);

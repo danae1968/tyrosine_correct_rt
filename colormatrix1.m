@@ -53,9 +53,10 @@ redmatrix=redmatrix';
 
 
 yellowmatrix=zeros(15,3);
-for i=1:length(yellowmatrix)
 
-Screen('FillRect',wPtr,yellowmatrix(:,i),rectOne');
+for i=1:length(redmatrix)
+
+Screen('FillRect',wPtr,redmatrix(:,i),rectOne');
 Screen('Flip',wPtr);
 KbStrokeWait;
 end
