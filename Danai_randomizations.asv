@@ -175,7 +175,7 @@ Screen('Preference', 'SuppressAllWarnings', 1);
 HideCursor;
 ListenChar(2);
 Priority(1);
-Screen('TextSize',wPtr,16);
+Screen('TextSize',wPtr,36);
 Screen('TextStyle',wPtr,1);
 Screen('TextFont',wPtr,'Courier New');
 
@@ -193,10 +193,7 @@ Screen('TextFont',wPtr,'Courier New');
 % display
 stimOnset = Screen(wPtr,'Flip');
 % onset = stimOnset-exptOnset;
-target='U';
-non_target='N';
-T_color=[0 225 0];
-N_color=[225 0 0];
+
 evt = [];
 responded = [];
 rectOne=[0 0 100 100];
@@ -263,7 +260,7 @@ rectOne=[0 0 100 100];
             ignore = 'N';
             update = 'U';
                             
-            Screen('Textsize', wPtr, 44);
+            Screen('Textsize', wPtr, 64);
             Screen('Textfont', wPtr, ['Times New Roman']); 
                             
             switch trial(g,p).trialType
@@ -285,7 +282,7 @@ rectOne=[0 0 100 100];
                         phaselabel = 'new_info_ignore_total';
 %                         Screen('BlendFunction', w, GL_SRC_ALPHA, ...
 %                                                 GL_ONE_MINUS_SRC_ALPHA);
-                        
+%                         DrawFormattedText(w, non_target, 'center', 'center', N_color);
                         switch trial(g,p).setSize
                              case 1
                                 rectOne=CenterRectOnPoint(rectOne,trial(g,p).locations(1,1),trial(g,p).locations(1,2)); 
@@ -314,8 +311,7 @@ rectOne=[0 0 100 100];
                          end
                          
                            Screen('FillRect',wPtr,color,allrects);
-                           DrawFormattedText(wPtr, non_target, 'center', 'center', N_color);
-%                            drawFixationCross(wPtr,rect,10,[0 0 0],3)
+                           drawFixationCross(wPtr,rect,10,[0 0 0],3)
                            Screen('Flip',wPtr);
                            WaitSecs(2);
                         
@@ -331,7 +327,7 @@ rectOne=[0 0 100 100];
                         phaselabel = 'new_info_update';
 %                         Screen('BlendFunction', w, GL_SRC_ALPHA, ...
 %                                             GL_ONE_MINUS_SRC_ALPHA);
-                    
+                        DrawFormattedText(w, ', 'center', 'center', T_color);
                         switch trial(g,p).setSize
                              case 1
                                 rectOne=CenterRectOnPoint(rectOne,trial(g,p).locations(1,1),trial(g,p).locations(1,2)); 
@@ -360,8 +356,7 @@ rectOne=[0 0 100 100];
                          end
                          
                            Screen('FillRect',wPtr,color,allrects);
-                           DrawFormattedText(wPtr, target, 'center', 'center', T_color);
-%                            drawFixationCross(wPtr,rect,10,[0 0 0],3)
+                           drawFixationCross(wPtr,rect,10,[0 0 0],3)
                            Screen('Flip',wPtr);
                            WaitSecs(2);
                         
