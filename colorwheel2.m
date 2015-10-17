@@ -7,12 +7,14 @@
 %http://www.mathworks.com/matlabcentral/fileexchange/16233-sc-powerful-image-rendering
 %http://www.mathworks.com/matlabcentral/fileexchange/23342-real2rgb---colormaps
 
+newshades=jet;  %from functions that extend matlab colors beyond number 65
+
 r = linspace(0,1,10);
 theta = linspace(0, 2*pi, 100);
 [rg, thg] = meshgrid(r,theta);
 [x,y] = pol2cart(thg,rg);
 pcolor(x,y,thg);
-colormap(get);
+colormap(newshades);
 shading flat;
 % axis equal;
 
@@ -35,7 +37,7 @@ circlePixels = array2D >= innerRadius.^2 & array2D <= outerRadius.^2;
 % Now, display it.
 pcolor(circlePixels);
 image(circlePixels) ;
-colormap(jet)
+colormap(newshades)
 colormap(223,0,0);
 title('Ring', 'FontSize', 25);
 
