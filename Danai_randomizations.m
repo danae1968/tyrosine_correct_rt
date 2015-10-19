@@ -46,9 +46,9 @@ locationmatrix(r,2)=(rect(4)*xyindex(r,2));
  end
 
  %%color matrix
- 
-% colormatrix1
-colormatrix;  %calls function with color values
+
+% colormatrix;  %calls function with color values
+colormatrix=hsvcolormap;
 
 %%%  Put into structure (for easy output of function)
 trialsvector=(1:numTrials)';
@@ -195,15 +195,15 @@ stimOnset = Screen(wPtr,'Flip');
 % onset = stimOnset-exptOnset;
 target='U';
 non_target='N';
-T_color=[0 225 0];
-N_color=[225 0 0];
+T_color=[0 255 100];
+N_color=[225 0 40];
 evt = [];
 responded = [];
 rectOne=[0 0 100 100];
 %Seans part!!     
   for g=1:numTrials
       for p=1:numBlocks
-        for phase = 1:4 
+        for phase = 1:5
           
        if phase == 1
             switch trial(g,p).trialType
@@ -246,8 +246,7 @@ rectOne=[0 0 100 100];
 %                          WaitSecs(2.0);
 %                          Screen('Flip',wPtr);  
 %                          T.encoding_off(trial(g.p).number,numBlocks) = GetSecs;
-                           
-   
+ 
             end
                          
        elseif phase == 2                                                                                                %first delay period
@@ -263,7 +262,7 @@ rectOne=[0 0 100 100];
             ignore = 'N';
             update = 'U';
                             
-            Screen('Textsize', wPtr, 44);
+            Screen('Textsize', wPtr, 34);
             Screen('Textfont', wPtr, ['Times New Roman']); 
                             
             switch trial(g,p).trialType
@@ -318,8 +317,7 @@ rectOne=[0 0 100 100];
 %                            drawFixationCross(wPtr,rect,10,[0 0 0],3)
                            Screen('Flip',wPtr);
                            WaitSecs(2);
-                        
-                        
+          
 %                         [VBLTimestamp startrt]=Screen('Flip', w);
 
 %                         T.i2_ignore_on(trial,whatcondition,whatsession) = GetSecs;
@@ -364,7 +362,7 @@ rectOne=[0 0 100 100];
 %                            drawFixationCross(wPtr,rect,10,[0 0 0],3)
                            Screen('Flip',wPtr);
                            WaitSecs(2);
-                        
+ 
 % 
 %                         [VBLTimestamp startrt]=Screen('Flip', w);
 
@@ -376,8 +374,7 @@ rectOne=[0 0 100 100];
 %                         T.i2_update_off(trial,whatcondition,whatsession) = GetSecs;
                          
             end % TYPETRIAL
-                    
-                            
+          
       elseif phase == 4
                  phaselabel = 'delay 2';
 %                  T.delay2_on(trial,whatcondition,whatsession) = GetSecs; 
@@ -387,17 +384,56 @@ rectOne=[0 0 100 100];
 %                  T.delay2_off(trial,whatcondition,whatsession) = GetSecs; 
                  WaitSecs(2)
 
-                         
-                 [KeyIsDown, secs, KeyCode] = KbCheck(-1);  
-                 WaitSecs(0.001);
+                      elseif phase == 5  %old version
+                          phaselabel = 'probe';
+                          switch trial(g,p).setSize
+                              case 1
+                                  probeRectX=trial(g,p).locations(1);
+                                  probeRectY=trial(g,p).locations(2);
+                              otherwise
+                                  locationsrect=trial(g,p).locations;
+                                  probeRectXY=datasample(locationsrect,1);
+                                  probeRectX=probeRectXY(1,1);
+                                  probeRectY=probeRectXY(1,2);
+                          end
+                          ShowCursor;
+                          probeColor=[0 0 0];
+                          probeRect=[100 100 200 200];
+                          insideRect=[rect(1) rect(2) 0.67*rect(4) 0.67*rect(4)];
+                          outsideRect=[rect(1) rect(2) 0.9*rect(4) 0.9*rect(4)];
+                          outsideRect=CenterRectOnPoint(outsideRect,rect(3)/2, rect(4)/2);
+                          insideRect=CenterRectOnPoint(insideRect,rect(3)/2,rect(4)/2);
+                          probeRect=CenterRectOnPoint(probeRect,probeRectX,probeRectY);
+                          % colors=colormatrix;
+                          colors=hsvcolormap;
+                          colorangle=360/length(colors);  %convert into pi? 
+                          rads=0:colorangle:360;
+                          for ind=1:length(colors)
+                              Screen('FillArc',wPtr,colors(ind,:),outsideRect,rads(ind),colorangle);
+                          end
+                          
+                          Screen('FillOval',wPtr,[255 255 255 ],insideRect);
+                          Screen('FrameRect', wPtr, probeColor, probeRect);
+                          Screen('Flip',wPtr)
+                          [clicks,x,y,whichButton] = GetClicks(wPtr)
+%                           KeyCode(oldresp) = 0;
+%                           KeyCode(newresp) = 0;
+%                           ezpass = -1; 
+%                           start_time = GetSecs;     
+%                           probe_time = GetSecs;
+%                           T.rtimekeeper(trial,whatcondition,whatsession) = probe_time-time0;
+%                           if probe_time - time0 > rtime, break, end
+%                           [KeyIsDown, secs, KeyCode] = KbCheck(-1);  
+                          WaitSecs(0.001);
+
        end
         end
       end
   end
+      clear Screen
+  end
        
-                 
-clear Screen
- end
+                
 % %General aims:
 % %AIM 1: get blockvector randomized 
 % %AIM 2: make setsize matrix of same size (numTrials * numBlocks) including numbers 1-4 on each trialtype
